@@ -6,32 +6,52 @@ declare const NPM_PACKAGE_VERSION:
 
 export const VERSION = NPM_PACKAGE_VERSION;
 
-export type RequiredLocale = "en" | "ja";
-export type OptionalLocale = "fr";
+export interface Types {}
+
+type _Types = Omit<
+  {
+    RequiredLocale: "ja";
+    OptionalLocale: "en";
+  },
+  keyof Types
+> &
+  Types;
+
+export type RequiredLocale = _Types["RequiredLocale"];
+export type OptionalLocale = _Types["OptionalLocale"];
+export type Locale = RequiredLocale | OptionalLocale;
 
 interface Configuration {
-  locales: [...ReadonlyArray<RequiredLocale | OptionalLocale>, RequiredLocale];
+  locales: [...ReadonlyArray<Locale>, RequiredLocale];
 }
 const configuration: Configuration = {
-  locales: ["en"],
+  locales: ["ja"],
 };
 
-export function setLocales(
-  ...locales: [...ReadonlyArray<RequiredLocale | OptionalLocale>, RequiredLocale]
-) {
+export function setLocales(...locales: [...ReadonlyArray<Locale>, RequiredLocale]) {
   configuration.locales = locales;
 }
 
-export function tt<
-  T extends Record<RequiredLocale, string | ReadonlyArray<string>> &
-    Partial<Record<OptionalLocale, string | ReadonlyArray<string>>>,
->(dictionary: T): string {
-  for (const locale of configuration.locales) {
+export function t(
+  dictionary: Record<RequiredLocale, string> & Partial<Record<OptionalLocale, string>>,
+  variables?: Partial<Record<string, string | { (locale: Locale): string }>>,
+  options?: Partial<{
+    locales: [...ReadonlyArray<Locale>, RequiredLocale];
+  }>,
+): string {
+  for (const locale of options?.locales ?? configuration.locales) {
     const string = dictionary[locale];
-    if (Array.isArray(string)) {
-      return string.join("");
-    } else if (typeof string === "string") {
-      return string;
+    if (string !== undefined) {
+      return string.replace(/\{\{([^{}]+)\}\}/g, function (token, key: string) {
+        const variable = variables?.[key];
+        if (typeof variable === "function") {
+          return variable(locale);
+        } else if (typeof variable === "string") {
+          return variable;
+        } else {
+          return token;
+        }
+      });
     }
   }
 
