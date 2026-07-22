@@ -1,0 +1,46 @@
+{
+  "author": {
+    "name": "kthksgy",
+    "url": "https://github.com/kthksgy"
+  },
+  "description": "Tonari is an inline-first i18n library for JavaScript and TypeScript, keeping translations close to the UI.",
+  "devDependencies": {
+    "@types/node": "^26.1.1",
+    "esbuild": "0.28.1",
+    "typescript": "^7.0.2"
+  },
+  "exports": {
+    ".": {
+      "types": "./dist/types/index.d.ts",
+      "import": "./dist/import.js",
+      "require": "./dist/require.js"
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "homepage": "https://github.com/kthksgy/tonari/tree/main/packages/tonari",
+  "keywords": [
+    "i18n",
+    "internationalization",
+    "l10n",
+    "localization"
+  ],
+  "license": "MIT",
+  "main": "./dist/node/index.cjs",
+  "module": "./dist/browser/index.js",
+  "name": "tonari",
+  "repository": {
+    "directory": "packages/tonari",
+    "type": "git",
+    "url": "git+https://github.com/kthksgy/tonari.git"
+  },
+  "scripts": {
+    "build": "node --experimental-strip-types build.ts && tsc --project tsconfig.build.json",
+    "coverage": "vitest run --coverage",
+    "test": "vitest --typecheck"
+  },
+  "type": "module",
+  "types": "./dist/types/index.d.ts",
+  "version": "0.0.0-alpha+0"
+}

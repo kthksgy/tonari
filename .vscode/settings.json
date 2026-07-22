@@ -1,0 +1,69 @@
+{
+  "editor.codeActionsOnSave": { "source.fixAll.oxc": "always" },
+  "editor.defaultFormatter": "oxc.oxc-vscode",
+  "editor.formatOnSave": true,
+  "editor.formatOnSaveMode": "file",
+  "editor.insertSpaces": true,
+  "editor.tabSize": 2,
+
+  "extensions.ignoreRecommendations": false,
+
+  "files.eol": "\n",
+  "files.exclude": {
+    "**/.DS_Store": true,
+    "**/.git": true,
+    "**/.gitkeep": true,
+    "**/.hg": true,
+    "**/.svn": true,
+    "**/CVS": true,
+    "**/node_modules": true
+  },
+  "files.trimTrailingWhitespace": true,
+
+  "js/ts.tsdk.path": "./node_modules/typescript/lib",
+  "js/ts.validate.enabled": true,
+
+  "[css]": {
+    "editor.defaultFormatter": "oxc.oxc-vscode"
+  },
+
+  "[html]": {
+    "editor.defaultFormatter": "oxc.oxc-vscode"
+  },
+
+  "[javascript]": {
+    "editor.defaultFormatter": "oxc.oxc-vscode"
+  },
+
+  "[json]": {
+    "editor.defaultFormatter": "oxc.oxc-vscode"
+  },
+
+  "[jsonc]": {
+    "editor.defaultFormatter": "oxc.oxc-vscode"
+  },
+
+  "[markdown]": {
+    "editor.defaultFormatter": "oxc.oxc-vscode"
+  },
+
+  "[scss]": {
+    "editor.defaultFormatter": "oxc.oxc-vscode"
+  },
+
+  "[svg]": {
+    "editor.defaultFormatter": "jock.svg"
+  },
+
+  "[typescript]": {
+    "editor.defaultFormatter": "oxc.oxc-vscode"
+  },
+
+  "[typescriptreact]": {
+    "editor.defaultFormatter": "oxc.oxc-vscode"
+  },
+
+  "[yaml]": {
+    "editor.defaultFormatter": "oxc.oxc-vscode"
+  }
+}
