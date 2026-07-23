@@ -46,18 +46,18 @@ const configuration: Configuration = {
 };
 
 /**
- * Returns the current locale preference list.
+ * Gets the current locale preference list.
  *
- * The returned value is read-only from the caller's perspective.
+ * In typical i18n libraries,
+ * the first element is the `locale` and the last element is the `fallbackLocale`.
  */
 export function getLocales(): Readonly<Locales> {
   return configuration.locales;
 }
 
 /**
- * Updates the global locale preference list.
- *
- * The final locale must be the required locale.
+ * Sets the locale preference list.
+ * The last element must always be one of the required locales as a fallback.
  */
 export function setLocales(...locales: Configuration["locales"]) {
   configuration.locales = locales;
