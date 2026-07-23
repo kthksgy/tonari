@@ -21,22 +21,6 @@ importers:
         specifier: ^7.0.2
         version: 7.0.2
 
-  packages/example1:
-    dependencies:
-      tonari:
-        specifier: workspace:*
-        version: link:../tonari
-    devDependencies:
-      '@types/node':
-        specifier: ^26.1.1
-        version: 26.1.1
-      esbuild:
-        specifier: 0.28.1
-        version: 0.28.1
-      typescript:
-        specifier: ^7.0.2
-        version: 7.0.2
-
   packages/tonari:
     devDependencies:
       '@types/node':
@@ -51,6 +35,22 @@ importers:
       vitest:
         specifier: ^4.1.10
         version: 4.1.10(@types/node@26.1.1)(vite@8.1.5(@types/node@26.1.1)(esbuild@0.28.1))
+
+  packages/tonari-test:
+    dependencies:
+      tonari:
+        specifier: workspace:*
+        version: link:../tonari
+    devDependencies:
+      '@types/node':
+        specifier: ^26.1.1
+        version: 26.1.1
+      esbuild:
+        specifier: 0.28.1
+        version: 0.28.1
+      typescript:
+        specifier: ^7.0.2
+        version: 7.0.2
 
 packages:
 

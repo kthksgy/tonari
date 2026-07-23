@@ -1,0 +1,17 @@
+{
+  "name": "tonari-test",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "node --experimental-strip-types build.ts",
+    "start": "node --enable-source-maps dist/main.cjs"
+  },
+  "dependencies": {
+    "tonari": "workspace:*"
+  },
+  "devDependencies": {
+    "@types/node": "^26.1.1",
+    "esbuild": "0.28.1",
+    "typescript": "^7.0.2"
+  }
+}
