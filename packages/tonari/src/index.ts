@@ -1,34 +1,31 @@
-declare const NPM_PACKAGE_VERSION:
-  | `${string}.${string}.${string}`
-  | `${string}.${string}.${string}+${string}`
-  | `${string}.${string}.${string}-${string}`
-  | `${string}.${string}.${string}-${string}+${string}`;
-
-export const VERSION = NPM_PACKAGE_VERSION;
-
 export interface Types {}
 
-type _Types = Omit<
-  {
-    RequiredLocale: "ja";
-    OptionalLocale: "en";
-  },
-  keyof Types
-> &
-  Types;
+type _Types = Types &
+  Omit<
+    {
+      RequiredLocale: "ja";
+      OptionalLocale: "en";
+    },
+    keyof Types
+  >;
 
 export type RequiredLocale = _Types["RequiredLocale"];
 export type OptionalLocale = _Types["OptionalLocale"];
 export type Locale = RequiredLocale | OptionalLocale;
+export type Locales = [...ReadonlyArray<Locale>, RequiredLocale];
 
 interface Configuration {
-  locales: [...ReadonlyArray<Locale>, RequiredLocale];
+  locales: Locales;
 }
 const configuration: Configuration = {
   locales: ["ja"],
 };
 
-export function setLocales(...locales: [...ReadonlyArray<Locale>, RequiredLocale]) {
+export function getLocales(): Readonly<Locales> {
+  return configuration.locales;
+}
+
+export function setLocales(...locales: Configuration["locales"]) {
   configuration.locales = locales;
 }
 

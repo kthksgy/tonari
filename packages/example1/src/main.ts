@@ -3,8 +3,8 @@ import { t } from "tonari";
 declare module "tonari" {
   interface Types {
     RequiredLocale: "fr";
-    OptionalLocale: "es";
+    OptionalLocale: "es" | "ja";
   }
 }
 
-t({ fr: "モジュール拡張のテストです。" });
+t({ fr: "", ja: "これはモジュール拡張のテストです。" });

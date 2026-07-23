@@ -42,9 +42,6 @@ for (const { entryPoints, format, platform, target } of [
 ] satisfies ReadonlyArray<esbuild.BuildOptions>) {
   await esbuild.build({
     bundle: true,
-    define: {
-      NPM_PACKAGE_VERSION: '"' + process.env.npm_package_version + '"',
-    },
     entryPoints,
     external,
     format,
