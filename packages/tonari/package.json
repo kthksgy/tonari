@@ -3,7 +3,7 @@
     "name": "kthksgy",
     "url": "https://github.com/kthksgy"
   },
-  "description": "Tonari is an inline-first i18n library for JavaScript and TypeScript, keeping translations close to the UI.",
+  "description": "Inline-first i18n library for JavaScript and TypeScript, keeping translations close to the UI.",
   "devDependencies": {
     "@types/node": "^26.1.1",
     "esbuild": "0.28.1",
