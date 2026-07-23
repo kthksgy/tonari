@@ -12,6 +12,7 @@ export function tonari(): Plugin {
 
   return {
     name: "tonari",
+
     apply: "build",
 
     buildStart() {
@@ -20,13 +21,11 @@ export function tonari(): Plugin {
         delete strings[key];
       }
     },
-
     load(id) {
       if (id === resolvedVirtualModuleId) {
         return "export const " + STRINGS_KEY + "=" + STRINGS_VALUE + ";";
       }
     },
-
     renderChunk(code) {
       if (code.includes(STRINGS_VALUE)) {
         return {
@@ -43,13 +42,11 @@ export function tonari(): Plugin {
         };
       }
     },
-
     resolveId(source) {
       if (source === virtualModuleId) {
         return resolvedVirtualModuleId;
       }
     },
-
     transform(code, id) {
       if (!id.match(/\.(ts|js|tsx|jsx)$/)) {
         return null;

@@ -22,13 +22,13 @@ describe("t", function () {
   test("returns the first translation available in the locale list", function () {
     setLocales("en", "ja");
 
-    expect(t({ ja: "こんにちは", en: "Hello" })).toBe("Hello");
+    expect(t({ en: "Hello", ja: "こんにちは" })).toBe("Hello");
   });
 
   test("uses options locales without changing the global preference list", function () {
     setLocales("ja");
 
-    expect(t({ ja: "こんにちは", en: "Hello" }, undefined, { locales: ["en", "ja"] })).toBe(
+    expect(t({ en: "Hello", ja: "こんにちは" }, undefined, { locales: ["en", "ja"] })).toBe(
       "Hello",
     );
     expect(getLocales()).toEqual(["ja"]);
@@ -36,7 +36,7 @@ describe("t", function () {
 
   test("replaces string variables and keeps unknown placeholders", function () {
     expect(
-      t({ ja: "こんにちは、{{name}}さん。{{missing}}", en: "Hello, {{name}}." }, { name: "太郎" }),
+      t({ en: "Hello, {{name}}.", ja: "こんにちは、{{name}}さん。{{missing}}" }, { name: "太郎" }),
     ).toBe("こんにちは、太郎さん。{{missing}}");
   });
 
@@ -46,7 +46,7 @@ describe("t", function () {
       return locale === "en" ? "friend" : "友だち";
     });
 
-    expect(t({ ja: "こんにちは、{{name}}。", en: "Hello, {{name}}." }, { name: variable })).toBe(
+    expect(t({ en: "Hello, {{name}}.", ja: "こんにちは、{{name}}。" }, { name: variable })).toBe(
       "Hello, friend.",
     );
     expect(variable).toHaveBeenCalledWith("en");
