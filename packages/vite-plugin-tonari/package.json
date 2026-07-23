@@ -1,0 +1,46 @@
+{
+  "author": {
+    "name": "kthksgy",
+    "url": "https://github.com/kthksgy"
+  },
+  "description": "Vite plugin for extracting static messages used in tonari t() calls.",
+  "devDependencies": {
+    "@types/node": "^26.1.1",
+    "esbuild": "0.28.1",
+    "typescript": "^7.0.2",
+    "vite": "^8.1.5",
+    "vitest": "^4.1.10"
+  },
+  "exports": {
+    ".": {
+      "types": "./dist/types/index.d.ts",
+      "import": "./dist/import.js",
+      "require": "./dist/require.js"
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "homepage": "https://github.com/kthksgy/tonari/tree/main/packages/vite-plugin-tonari",
+  "keywords": [
+    "vite-plugin",
+    "tonari"
+  ],
+  "license": "MIT",
+  "main": "./dist/require.js",
+  "module": "./dist/import.js",
+  "name": "vite-plugin-tonari",
+  "repository": {
+    "directory": "packages/vite-plugin-tonari",
+    "type": "git",
+    "url": "git+https://github.com/kthksgy/tonari.git"
+  },
+  "scripts": {
+    "build": "node --experimental-strip-types build.ts && tsc --project tsconfig.build.json",
+    "coverage": "vitest run --coverage",
+    "test": "vitest --typecheck"
+  },
+  "type": "module",
+  "types": "./dist/types/index.d.ts",
+  "version": "0.0.0"
+}
