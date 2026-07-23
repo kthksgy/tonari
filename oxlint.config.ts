@@ -126,7 +126,6 @@ export default defineConfig({
     "react/jsx-pascal-case": ["warn", { allowAllCaps: true }],
     /** `children`プロパティを子要素として渡す。 */
     "react/no-children-prop": "warn",
-    "react/only-export-components": ["warn", { allowConstantExport: true }],
     /** `import React from 'react';`を要する。 */
     "react/react-in-jsx-scope": "off",
     "react/rules-of-hooks": "warn",
